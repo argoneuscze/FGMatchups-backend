@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128210652) do
+ActiveRecord::Schema.define(version: 20171129121428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20171128210652) do
     t.string "full_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["full_name"], name: "index_characters_on_full_name", unique: true
+    t.index ["short_name"], name: "index_characters_on_short_name", unique: true
   end
 
   create_table "matchup_items", force: :cascade do |t|
@@ -35,8 +37,8 @@ ActiveRecord::Schema.define(version: 20171128210652) do
     t.integer "char_against_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["char_against_id"], name: "index_matchups_on_char_against_id"
-    t.index ["char_as_id"], name: "index_matchups_on_char_as_id"
+    t.index ["char_against_id", "char_as_id"], name: "index_matchups_on_char_against_id_and_char_as_id", unique: true
+    t.index ["char_as_id", "char_against_id"], name: "index_matchups_on_char_as_id_and_char_against_id", unique: true
   end
 
   add_foreign_key "matchup_items", "matchups"
