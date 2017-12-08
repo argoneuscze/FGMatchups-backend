@@ -39,7 +39,7 @@ RSpec.describe 'Characters API', type: :request do
         expect(response).to have_http_status(404)
       end
 
-      it 'returns an error message' do
+      it 'returns error message' do
         expect(json).not_to be_empty
         expect(json['message']).to match(/Couldn't find Character/)
       end
