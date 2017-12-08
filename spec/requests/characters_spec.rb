@@ -17,4 +17,31 @@ RSpec.describe 'Characters API', type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'GET /character/:id' do
+    context 'when character exists' do
+      before { get "/characters/#{valid_char_id}" }
+
+      it 'returns character' do
+        expect(json).not_to be_empty
+      end
+
+      it 'returns 200' do
+        expect(response).to have_http_status(200)
+        expect(json['id']).to eq(valid_char_id)
+      end
+    end
+
+    context 'when character does not exist' do
+      before { get "/characters/#{invalid_char_id}" }
+
+      it 'returns 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns an error message' do
+        expect(json['message']).to match(/Couldn't find Character/)
+      end
+    end
+  end
 end
