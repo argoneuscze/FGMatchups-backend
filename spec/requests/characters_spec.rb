@@ -24,7 +24,7 @@ RSpec.describe 'Characters API', type: :request do
 
       it 'returns character' do
         expect(json).not_to be_empty
-        expect(json['id']).to eq(valid_char_id)
+        expect(json['id']).to eq valid_char_id
       end
 
       it 'returns 200' do
@@ -40,6 +40,7 @@ RSpec.describe 'Characters API', type: :request do
       end
 
       it 'returns an error message' do
+        expect(json).not_to be_empty
         expect(json['message']).to match(/Couldn't find Character/)
       end
     end

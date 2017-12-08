@@ -40,6 +40,7 @@ RSpec.describe 'Matchups API' do
       end
 
       it 'returns error message' do
+        expect(json).not_to be_empty
         expect(json['message']).to match(/Couldn't find Matchup/)
       end
     end
