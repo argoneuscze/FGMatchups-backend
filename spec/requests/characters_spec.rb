@@ -24,11 +24,11 @@ RSpec.describe 'Characters API', type: :request do
 
       it 'returns character' do
         expect(json).not_to be_empty
+        expect(json['id']).to eq(valid_char_id)
       end
 
       it 'returns 200' do
         expect(response).to have_http_status(200)
-        expect(json['id']).to eq(valid_char_id)
       end
     end
 
