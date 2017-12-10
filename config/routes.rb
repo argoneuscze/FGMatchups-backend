@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :matchups, only: [:show] do
     resources :matchup_items
   end
+
+  get '/matchups/:id_as/:id_against', to: 'matchups#find_matchup'
 end
