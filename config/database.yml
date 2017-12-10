@@ -29,7 +29,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: matchup_user
+  username: ggmatchups
 
   # The password associated with the postgres role (username).
   password: asd123
@@ -58,7 +58,7 @@ development:
 test:
   <<: *default
   database: ggmatchups_test
-  username: matchup_user
+  username: ggmatchups
   password: asd123
   host: localhost
   port: 5432
