@@ -5,19 +5,6 @@ RSpec.describe 'Matchups API' do
   let(:valid_matchup_id) { matchups.first.id }
   let(:invalid_matchup_id) { valid_matchup_id + 10 }
 
-  describe 'GET /matchups' do
-    before { get '/matchups' }
-
-    it 'returns matchups' do
-      expect(json).not_to be_empty
-      expect(json.size).to eq 10
-    end
-
-    it 'returns 200' do
-      expect(response).to have_http_status(200)
-    end
-  end
-
   describe 'GET /matchups/:id' do
     context 'when matchup exists' do
       before { get "/matchups/#{valid_matchup_id}" }
